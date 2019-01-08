@@ -21,7 +21,7 @@ public class AnnotationEqualsMethod {
                         final Object thisValue = propertyValueMap.get(method.getName());
                         if (thisValue != null) {
                             final Object thatValue = extractValue(that, method);
-                            if (!memberValueEquals(thisValue, thatValue)) {
+                            if (!attributeValueEquals(thisValue, thatValue)) {
                                 return false;
                             }
                         }
@@ -42,7 +42,7 @@ public class AnnotationEqualsMethod {
         return null;
     }
 
-    private static boolean memberValueEquals(final Object thisValue, final Object thatValue) {
+    private static boolean attributeValueEquals(final Object thisValue, final Object thatValue) {
         Class thisValueClass = thisValue.getClass();
         if (!thisValueClass.isArray()) {
             return thisValue.equals(thatValue);

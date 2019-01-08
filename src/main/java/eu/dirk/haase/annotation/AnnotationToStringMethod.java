@@ -40,11 +40,9 @@ public final class AnnotationToStringMethod {
         str.append('@');
         str.append(((Class<?>)propertyValueMap.get("annotationType")).getName());
         str.append('(');
-        Iterator iter = propertyValueMap.entrySet().iterator();
 
         boolean isFirst = true;
-        while (iter.hasNext()) {
-            Map.Entry entry = (Map.Entry) iter.next();
+        for(Map.Entry<String, Object> entry : propertyValueMap.entrySet()) {
             if (!"annotationType".equals(entry.getKey())) {
                 if (isFirst) {
                     isFirst = false;
@@ -52,7 +50,7 @@ public final class AnnotationToStringMethod {
                     str.append(", ");
                 }
 
-                str.append((String) entry.getKey());
+                str.append(entry.getKey());
                 str.append('=');
                 str.append(attributeValueToString(entry.getValue()));
             }
